@@ -1,0 +1,60 @@
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.rsuser
+*.suo
+
+# Visual Studio files
+.vs/
+.vscode/
+.idea/
+
+# Rider
+*.sln.iml
+
+# Logs
+*.log
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Entity Framework
+*.mdf
+*.ldf
+
+# Publish output
+publish/
+app.publish/
+
+# Azure
+.azure/
+
+# Environment files
+.env
+.env.*
+
+# Secrets
+secrets.json
+appsettings.Development.json
+
+# Node modules (if React frontend exists inside project)
+node_modules/
+
+# Frontend build output
+dist/
+build/
+
+# NuGet
+*.nupkg
+packages/
+
+# Test results
+TestResults/
+coverage/
+
+# OS files
+.DS_Store
+Thumbs.db
