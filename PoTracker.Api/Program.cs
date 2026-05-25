@@ -17,8 +17,8 @@ builder.Services.AddMediatR(cfg =>
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("Frontend", policy =>
-        policy.WithOrigins("https://ptrkuic22c0ee1.z19.web.core.windows.net/",
-                            "http://localhost:5173/")
+        policy.WithOrigins("https://ptrkuic22c0ee1.z19.web.core.windows.net",
+                            "http://localhost:5173")
               .AllowAnyMethod()
               .AllowAnyHeader());
 });
@@ -28,9 +28,9 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-app.UseCors("Frontend");
-
 app.UseRouting();
+
+app.UseCors("Frontend");
 
 if (app.Environment.IsDevelopment())
 {
