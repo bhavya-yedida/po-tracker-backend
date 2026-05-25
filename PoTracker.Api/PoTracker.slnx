@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="../PoTracker.Application/PoTracker.Application.csproj" />
+  <Project Path="../PoTracker.Domain/PoTracker.Domain.csproj" />
+  <Project Path="../PoTracker.Infrastructure/PoTracker.Infrastructure.csproj" />
+  <Project Path="../PoTracker.Persistence/PoTracker.Persistence.csproj" />
+  <Project Path="PoTracker.Api.csproj" />
+</Solution>
