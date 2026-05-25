@@ -4,7 +4,12 @@ using PoTracker.Application.Features.Tasks.Queries;
 using PoTracker.Infrastructure.Data;
 using System.Reflection;
 
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
 
 builder.Services.AddControllers();
 
