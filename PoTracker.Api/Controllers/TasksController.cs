@@ -32,9 +32,13 @@ public class TasksController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPut("Update")]
-    public async Task<IActionResult> Update(UpdateTaskCommand command)
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(
+    int id,
+    [FromBody] UpdateTaskCommand command)
     {
+        command.Id = id;
+
         var result = await _mediator.Send(command);
 
         if (result == null)
@@ -43,10 +47,11 @@ public class TasksController : ControllerBase
         return Ok(result);
     }
 
-    [HttpDelete]
-    public async Task<IActionResult> Delete([FromBody] DeleteTaskCommand command)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
     {
-        var result = await _mediator.Send(command);
+        var result = await _mediator.Send(
+        new DeleteTaskCommand(id));
 
         if (!result)
             return NotFound();
