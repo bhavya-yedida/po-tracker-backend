@@ -6,7 +6,7 @@ name: Build and deploy ASP.Net Core app to Azure Web App - po-tracker-api
 on:
   push:
     branches:
-      - main
+      - feature/Phase1
   workflow_dispatch:
 
 jobs:
