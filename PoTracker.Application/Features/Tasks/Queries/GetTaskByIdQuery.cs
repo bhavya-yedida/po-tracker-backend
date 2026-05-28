@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace PoTracker.Application.Features.Tasks.Queries
 {
-    public class GetChecklistQuery : IRequest<List<ChecklistItem>>
+    public class GetTaskByIdQuery : IRequest<TaskItem?>
     {
-        public DateTime Date { get; set; }
+        public int Id { get; set; }
     }
 }

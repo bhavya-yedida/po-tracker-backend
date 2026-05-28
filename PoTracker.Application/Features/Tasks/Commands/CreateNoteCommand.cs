@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace PoTracker.Application.Features.Tasks.Commands
 {
-    public class UpdateChecklistCommand : IRequest<ChecklistItem?>
+    public class CreateNoteCommand : IRequest<Note>
     {
-        public int Id { get; set; }
-        public string Title { get; set; } = string.Empty;
-        public bool IsDone { get; set; }
+        public string Content { get; set; } = string.Empty;
+        public string? Tags { get; set; }
     }
 }

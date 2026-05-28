@@ -5,8 +5,7 @@ using PoTracker.Infrastructure.Data;
 
 namespace PoTracker.Application.Features.Tasks.Commands.UpdateTask
 {
-    public class UpdateTaskCommandHandler
-        : IRequestHandler<UpdateTaskCommand, TaskItem?>
+    public class UpdateTaskCommandHandler : IRequestHandler<UpdateTaskCommand, TaskItem?>
     {
         private readonly AppDbContext _context;
 
@@ -15,17 +14,14 @@ namespace PoTracker.Application.Features.Tasks.Commands.UpdateTask
             _context = context;
         }
 
-        public async Task<TaskItem?> Handle(
-            UpdateTaskCommand request,
-            CancellationToken cancellationToken)
+        public async Task<TaskItem?> Handle(UpdateTaskCommand request, CancellationToken cancellationToken)
         {
-            var task = await _context.Tasks
-                .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
+            var task = await _context.Tasks.FindAsync(request.Id);
 
-            if (task == null)
-                return null;
+            if (task == null) return null;
 
             task.Title = request.Title;
+            task.Description = request.Description;
             task.IsCompleted = request.IsCompleted;
 
             await _context.SaveChangesAsync(cancellationToken);

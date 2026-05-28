@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PoTracker.Application.Features.Tasks.Commands.Handler
+namespace PoTracker.Application.Features.Tasks.Commands
 {
     public class CreateChecklistCommand : IRequest<ChecklistItem>
     {
-        public string Title { get; set; }
-        public string Phase { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public DateTime Date { get; set; }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.EntityFrameworkCore;
 using PoTracker.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
@@ -9,23 +8,22 @@ using System.Threading.Tasks;
 
 namespace PoTracker.Application.Features.Tasks.Commands.Handler
 {
-    public class ToggleChecklistCommandHandler : IRequestHandler<ToggleChecklistCommand, bool>
+    public class DeleteChecklistCommandHandler : IRequestHandler<DeleteChecklistCommand, bool>
     {
         private readonly AppDbContext _context;
 
-        public ToggleChecklistCommandHandler(AppDbContext context)
+        public DeleteChecklistCommandHandler(AppDbContext context)
         {
             _context = context;
         }
 
-        public async Task<bool> Handle(ToggleChecklistCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(DeleteChecklistCommand request, CancellationToken cancellationToken)
         {
             var item = await _context.ChecklistItems.FindAsync(request.Id);
 
             if (item == null) return false;
 
-            item.IsDone = !item.IsDone;
-
+            _context.ChecklistItems.Remove(item);
             await _context.SaveChangesAsync(cancellationToken);
 
             return true;

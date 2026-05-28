@@ -10,21 +10,18 @@ using System.Threading.Tasks;
 
 namespace PoTracker.Application.Features.Tasks.Commands.Handler
 {
-    public class SaveNoteCommandHandler
-    : IRequestHandler<SaveNoteCommand, Note>
+    public class CreateNoteCommandHandler : IRequestHandler<CreateNoteCommand, Note>
     {
         private readonly AppDbContext _context;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public SaveNoteCommandHandler(AppDbContext context, IHttpContextAccessor httpContextAccessor)
+        public CreateNoteCommandHandler(AppDbContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<Note> Handle(
-            SaveNoteCommand request,
-            CancellationToken cancellationToken)
+        public async Task<Note> Handle(CreateNoteCommand request, CancellationToken cancellationToken)
         {
             var userId = Guid.Parse(
                 _httpContextAccessor.HttpContext!.User.FindFirst("userId")!.Value
@@ -33,8 +30,10 @@ namespace PoTracker.Application.Features.Tasks.Commands.Handler
             var note = new Note
             {
                 Content = request.Content,
+                Tags = request.Tags,
                 UserId = userId,
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = null
             };
 
             _context.Notes.Add(note);

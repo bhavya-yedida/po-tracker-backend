@@ -10,6 +10,6 @@ namespace PoTracker.Application.Features.Tasks.Commands
 {
     public class SaveNoteCommand : IRequest<Note>
     {
-        public string Content { get; set; }
+        public string? Content { get; set; }
     }
 }

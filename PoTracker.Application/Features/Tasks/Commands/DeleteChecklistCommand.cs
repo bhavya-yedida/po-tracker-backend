@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using PoTracker.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace PoTracker.Application.Features.Tasks.Commands
 {
-    public class UpdateChecklistCommand : IRequest<ChecklistItem?>
+    public class DeleteChecklistCommand : IRequest<bool>
     {
         public int Id { get; set; }
-        public string Title { get; set; } = string.Empty;
-        public bool IsDone { get; set; }
     }
 }
